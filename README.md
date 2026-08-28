@@ -67,5 +67,5 @@ English web hosting comparators and tutorials (shared plus managed cloud for sma
 
 ## What this folder is not
 
-Not live on the public internet. Not an application. No forms, no analytics pixels.
+Live: https://luiyi0905.github.io/host-intent/ (branch site). Not an application. No forms, no analytics pixels.
 Do not push the default branch.
