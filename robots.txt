@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://luiyi0905.github.io/host-intent/sitemap.xml

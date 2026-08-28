@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How to deploy a static site — Host Intent</title>
+  <meta name="description" content="Deploy HTML/CSS on GitHub Pages for $0. Relative URLs, local preview, DNS later. No custom domain required.">
+  <meta name="author" content="Luis Hernández">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="skip" href="#content">Skip to content</a>
+  <header class="site">
+    <div class="wrap">
+      <p class="brand"><a href="../">Host Intent</a></p>
+      <p class="tagline">Hosting comparisons and deploy notes for small sites.</p>
+      <p class="ftc-banner"><strong>Affiliate disclosure.</strong> Host Intent is a free site. Some links go to hosting companies. If you later buy through a tracked affiliate link, we may earn a commission at no extra cost to you. <strong>Zero programs are approved as of 2026-08-28</strong>, so outbound links on this page are official marketing URLs — not query-string affiliate links. We do not promise income, rankings, or “best” scores. Full note: <a href="../about/">About</a>.</p>
+      <nav class="primary" aria-label="Primary"><a href="../">Home</a>
+        <a href="../best-web-hosting-for-beginners/">Beginners</a>
+        <a href="../best-hosting-for-students/">Students</a>
+        <a href="../shared-vs-managed-cloud-hosting/">Shared vs cloud</a>
+        <a href="../how-to-deploy-a-static-site/" aria-current="page">Deploy a static site</a>
+        <a href="../hostinger-vs-cloudways/">Hostinger vs Cloudways</a>
+        <a href="../hostinger-vs-siteground/">Hostinger vs SiteGround</a>
+        <a href="../namecheap-hosting-vs-hostinger/">Namecheap vs Hostinger</a>
+        <a href="../about/">About</a>
+      </nav>
+    </div>
+  </header>
+  <main id="content">
+        <h1>How to deploy a static site for $0 (GitHub Pages)</h1>
+    <p class="lede">A static site is HTML, CSS, and maybe JavaScript files. No PHP. No database. You can put it on GitHub Pages at $0, with no custom domain and no hosting invoice. DNS is a later chapter.</p>
+
+    <h2>Who this is for</h2>
+    <p>Students and small-site owners who need a public URL for a portfolio, a class page, or this kind of comparison site. If you need WordPress, Laravel, or MySQL, stop: that is not static. Use <a href="../best-web-hosting-for-beginners/">beginner hosting criteria</a> or <a href="../shared-vs-managed-cloud-hosting/">shared vs managed cloud</a> instead.</p>
+
+    <h2>What static means here</h2>
+    <p>The server copies files to the browser. It does not run your code on each request. Forms that email you, login sessions, and shopping carts need something else (or a third-party form backend you are willing to trust — out of scope here).</p>
+
+    <h2>Before you touch DNS</h2>
+    <p>Do not buy a domain to feel professional on day one. GitHub will give you a <code>*.github.io</code> hostname. Get the site green on that name first. Pointing a domain is a separate, optional step (and it is how people accidentally produce a blank site for 24 hours).</p>
+    <h2>Tutorial: GitHub Pages from the repo root</h2>
+    <p>Official product page: <a href="https://pages.github.com/">https://pages.github.com/</a>. Official docs live under GitHub Docs. UI labels change; if a blog screenshot disagrees with GitHub docs, trust the docs.</p>
+    <ol>
+      <li><strong>Use a GitHub account you already have</strong> (signup is GitHub product, not Host Intent). This tutorial does not require paid GitHub features for a public project site — confirm on GitHub current billing docs if your repo is private.</li>
+      <li><strong>Create a new repository</strong> in the GitHub UI. Public repos can use Pages as GitHub currently documents.</li>
+      <li><strong>Add your files.</strong> A minimal site is <code>index.html</code> plus CSS. Folder URLs work if each folder has <code>index.html</code> (the same pattern this Host Intent tree uses).</li>
+      <li><strong>Commit on a branch you control.</strong> GitHub currently documents deploying from a branch (often the default branch) or from a <code>/docs</code> folder. This Host Intent source tree is meant to attach later as root or <code>docs/</code> — see the project README. Follow your own branch policy; this site source prefers a branch named <code>site</code> if you init git locally.</li>
+      <li><strong>Enable Pages</strong> in the repository Settings, Pages section. Choose the branch and <code>/</code> or <code>/docs</code>. Save.</li>
+      <li><strong>Wait for the first build.</strong> GitHub shows a <code>https://USER.github.io/REPO/</code> URL for project sites. User/organization sites use a different repo-name rule; read official docs rather than guessing.</li>
+      <li><strong>Check relative URLs.</strong> Open the Pages URL on a phone. If CSS 404s, your stylesheet path was probably absolute (<code>/css/style.css</code>) instead of relative. This tree uses relative paths so it also works when you open files locally.</li>
+    </ol>
+    <h2>Preview locally before you publish</h2>
+    <p>You can open <code>index.html</code> in a browser. For folder links, a local static server is cleaner. From this site directory:</p>
+<pre><code>python3 -m http.server 8080</code></pre>
+    <p>Then visit <code>http://127.0.0.1:8080/</code>. No Node toolchain is required for Host Intent.</p>
+
+    <h2>Optional: docs folder vs root</h2>
+    <p>GitHub Pages can serve the repository root or a <code>docs/</code> folder on a branch. If your git repo also holds notes that must not go public, keep the public HTML in <code>docs/</code> and point Pages there. Host Intent files currently live as a standalone tree (see project README). Copy them into whichever layout you choose after you have a repo — this tree is not published in this step.</p>
+
+    <h2>Custom domains (later)</h2>
+    <p>When you actually own a domain, GitHub docs describe a <code>CNAME</code> file and DNS records at your registrar. Namecheap is one registrar; official site: <a href="https://www.namecheap.com/">https://www.namecheap.com/</a>. Wrong records fail closed. Do this on a weekend, not an hour before class.</p>
+
+    <h2>When to leave Pages for a paid host</h2>
+    <ul class="plain">
+      <li>You need server-side PHP or a database.</li>
+      <li>You need mailbox hosting on the same vendor (still optional — school email may be enough).</li>
+      <li>Your app is not static. Then use the <a href="../best-web-hosting-for-beginners/">beginner</a> or <a href="../hostinger-vs-cloudways/">managed cloud</a> pages.</li>
+    </ul>
+
+    <h2>Official links</h2>
+    <ul class="plain official">
+      <li>GitHub Pages: <a href="https://pages.github.com/">https://pages.github.com/</a></li>
+      <li>Hostinger: <a href="https://www.hostinger.com/">https://www.hostinger.com/</a></li>
+      <li>Cloudways: <a href="https://www.cloudways.com/">https://www.cloudways.com/</a></li>
+      <li>SiteGround: <a href="https://www.siteground.com/">https://www.siteground.com/</a></li>
+      <li>Namecheap: <a href="https://www.namecheap.com/">https://www.namecheap.com/</a></li>
+    </ul>
+
+    <h2>What we have not measured</h2>
+    <div class="not-measured">
+      <ul class="plain">
+        <li>No claim about GitHub Pages build minutes or quota — read GitHub current docs.</li>
+        <li>No performance comparison of Pages vs a paid CDN. This site uses no paid CDN.</li>
+        <li>We have not published this tree to Pages in this step.</li>
+      </ul>
+    </div>
+
+    <h2>FAQ</h2>
+    <dl>
+      <dt>Does GitHub Pages support HTTPS?</dt>
+      <dd>GitHub documents HTTPS for Pages hostnames. Enforce it in the Pages settings when the checkbox is available. Custom domains have extra DNS/HTTPS steps in the official docs.</dd>
+      <dt>Can I use a tiny SSG?</dt>
+      <dd>Yes, if it emits static files. This Host Intent tree is already plain HTML so you can preview without installing a framework.</dd>
+      <dt>Is this an affiliate tutorial to sell hosting?</dt>
+      <dd>No. The point is you may not need hosting yet. Disclosure: <a href="../about/">About</a>.</dd>
+    </dl>
+
+    <p class="meta">Page updated 2026-08-28. This site is new; we have not run speed labs or long-term uptime logs. Prices change — check each provider’s current pricing page.</p>
+  </main>
+  <footer class="site">
+    <div class="wrap">
+      <p class="ftc-footer"><strong>FTC affiliate disclosure.</strong> Host Intent may earn a commission if you purchase hosting through a future affiliate link. That does not change the price you pay. As of 2026-08-28 we have <strong>no approved affiliate programs</strong> and <strong>no tracked links</strong>. We do not invent testimonials, income claims, or unpublished benchmarks. Methodology and operator details: <a href="../about/">About</a>.</p>
+      <nav aria-label="Footer"><a href="../">Home</a>
+        <a href="../best-web-hosting-for-beginners/">Beginners</a>
+        <a href="../best-hosting-for-students/">Students</a>
+        <a href="../shared-vs-managed-cloud-hosting/">Shared vs cloud</a>
+        <a href="../how-to-deploy-a-static-site/" aria-current="page">Deploy a static site</a>
+        <a href="../hostinger-vs-cloudways/">Hostinger vs Cloudways</a>
+        <a href="../hostinger-vs-siteground/">Hostinger vs SiteGround</a>
+        <a href="../namecheap-hosting-vs-hostinger/">Namecheap vs Hostinger</a>
+        <a href="../about/">About</a>
+      </nav>
+      <p>Host Intent is a placeholder name, not a purchased domain. Operator: Luis Hernández, El Salvador. Public copy in US English.</p>
+      <p>Canonical path for this page: <code>/how-to-deploy-a-static-site/</code></p>
+    </div>
+  </footer>
+</body>
+</html>

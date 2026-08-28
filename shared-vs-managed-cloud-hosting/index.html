@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shared vs managed cloud hosting — Host Intent</title>
+  <meta name="description" content="Shared hosting vs managed cloud for small sites: isolation, billing shape, ops homework. No fake benchmarks.">
+  <meta name="author" content="Luis Hernández">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="skip" href="#content">Skip to content</a>
+  <header class="site">
+    <div class="wrap">
+      <p class="brand"><a href="../">Host Intent</a></p>
+      <p class="tagline">Hosting comparisons and deploy notes for small sites.</p>
+      <p class="ftc-banner"><strong>Affiliate disclosure.</strong> Host Intent is a free site. Some links go to hosting companies. If you later buy through a tracked affiliate link, we may earn a commission at no extra cost to you. <strong>Zero programs are approved as of 2026-08-28</strong>, so outbound links on this page are official marketing URLs — not query-string affiliate links. We do not promise income, rankings, or “best” scores. Full note: <a href="../about/">About</a>.</p>
+      <nav class="primary" aria-label="Primary"><a href="../">Home</a>
+        <a href="../best-web-hosting-for-beginners/">Beginners</a>
+        <a href="../best-hosting-for-students/">Students</a>
+        <a href="../shared-vs-managed-cloud-hosting/" aria-current="page">Shared vs cloud</a>
+        <a href="../how-to-deploy-a-static-site/">Deploy a static site</a>
+        <a href="../hostinger-vs-cloudways/">Hostinger vs Cloudways</a>
+        <a href="../hostinger-vs-siteground/">Hostinger vs SiteGround</a>
+        <a href="../namecheap-hosting-vs-hostinger/">Namecheap vs Hostinger</a>
+        <a href="../about/">About</a>
+      </nav>
+    </div>
+  </header>
+  <main id="content">
+    
+    <h1>Shared hosting vs managed cloud hosting</h1>
+    <p class="lede">This is the fork most “best hosting” articles skip. Shared hosting puts many accounts on one machine behind a panel. Managed cloud gives you (or a platform) a dedicated VM-shaped slice on a public cloud, plus someone to patch the stack. Pick the model before you pick a logo.</p>
+
+    <h2>Who this is for</h2>
+    <p>Students and small-site owners who keep seeing both “shared” and “managed cloud” in the same shopping tab. If your site is still static HTML, you may need neither — start with <a href="../how-to-deploy-a-static-site/">a $0 static deploy</a>.</p>
+
+    <h2>Definitions we use on this site</h2>
+    <p><strong>Shared hosting:</strong> a hosting company sells you an account (files, often PHP, often MySQL) on a server that also serves other customers. You use a control panel. You usually do not pick a kernel or a cloud vendor.</p>
+    <p><strong>Managed cloud hosting:</strong> a VM (or similar) at a public cloud, plus a company that handles the platform: provisioning, a panel, often stacks for PHP/MySQL apps, sometimes staging. Cloudways is one example of this shape; it is not the only one. Confirm current providers on the official Cloudways site if that is the product you are considering.</p>
+    <p>We are not using “VPS” as a marketing synonym for both. A raw VPS with only SSH is a third shape (more control, more homework). This page stays on shared vs managed cloud because that is the small-site decision.</p>
+
+    <h2>Criteria</h2>
+    <div class="criteria">
+      <ol>
+        <li><strong>Isolation story.</strong> Shared: noisy-neighbor risk is real in principle; we have not measured it. Managed cloud: you typically pay for a size, which is easier to reason about, not magic immunity.</li>
+        <li><strong>Mental model.</strong> Shared: “I have an account.” Managed cloud: “I have a server size, a region, and a platform login.”</li>
+        <li><strong>Scaling lever.</strong> Shared: change plan SKU or leave. Managed cloud: resize or clone a server (vendor UI permitting — read their docs).</li>
+        <li><strong>Cost shape.</strong> Shared: often one advertised term price. Managed cloud: often hourly/monthly compute plus platform. We will not invent a crossover dollar amount. Check each provider’s current pricing page.</li>
+        <li><strong>Ops homework.</strong> Shared: updates are mostly “the host does it,” with CMS plugins still on you. Managed cloud: stack updates are partly the platform’s job; app updates remain yours.</li>
+        <li><strong>DNS timing.</strong> Neither model requires a custom domain on day one. Point DNS later, after the app answers on a vendor hostname.</li>
+      </ol>
+    </div>
+
+    <h2>A practical decision path</h2>
+    <ol>
+      <li>Static site? Use GitHub Pages. Paid hosting is optional.</li>
+      <li>Need PHP/MySQL and a wizard? Look at shared-style hosts first: <a href="../best-web-hosting-for-beginners/">beginners criteria</a>, then <a href="../hostinger-vs-siteground/">Hostinger vs SiteGround</a>.</li>
+      <li>Need a VM you can resize and a platform panel? Look at managed cloud: <a href="../hostinger-vs-cloudways/">Hostinger vs Cloudways</a> is the named pair we wrote because those two are often confused, not because we ranked them.</li>
+    </ol>
+
+    <h2>Official pages</h2>
+    <ul class="plain official">
+      <li>Hostinger (shared-style catalog on their site): <a href="https://www.hostinger.com/">https://www.hostinger.com/</a></li>
+      <li>Cloudways (managed cloud): <a href="https://www.cloudways.com/">https://www.cloudways.com/</a></li>
+      <li>SiteGround: <a href="https://www.siteground.com/">https://www.siteground.com/</a></li>
+    </ul>
+
+    <h2>What we have not measured</h2>
+    <div class="not-measured">
+      <ul class="plain">
+        <li>No noisy-neighbor experiment on shared servers.</li>
+        <li>No CPU steal or IOPS charts.</li>
+        <li>No claim that managed cloud is “always faster.”</li>
+        <li>No 2026 list prices.</li>
+      </ul>
+    </div>
+
+    <h2>FAQ</h2>
+    <dl>
+      <dt>Is managed cloud the same as “the cloud”?</dt>
+      <dd>Loosely. You are still renting a machine-shaped thing. The “managed” part is the platform team and panel, not a guarantee of zero work.</dd>
+      <dt>Is shared hosting obsolete?</dt>
+      <dd>No. It remains a common way to run a small PHP site. Obsolete is a marketing word.</dd>
+      <dt>Where does Namecheap fit?</dt>
+      <dd>Namecheap is often a domain registrar first in people’s heads. They also sell hosting. See <a href="../namecheap-hosting-vs-hostinger/">Namecheap hosting vs Hostinger</a>.</dd>
+    </dl>
+
+    <p class="meta">Page updated 2026-08-28. This site is new; we have not run speed labs or long-term uptime logs. Prices change — check each provider’s current pricing page.</p>
+  </main>
+  <footer class="site">
+    <div class="wrap">
+      <p class="ftc-footer"><strong>FTC affiliate disclosure.</strong> Host Intent may earn a commission if you purchase hosting through a future affiliate link. That does not change the price you pay. As of 2026-08-28 we have <strong>no approved affiliate programs</strong> and <strong>no tracked links</strong>. We do not invent testimonials, income claims, or unpublished benchmarks. Methodology and operator details: <a href="../about/">About</a>.</p>
+      <nav aria-label="Footer"><a href="../">Home</a>
+        <a href="../best-web-hosting-for-beginners/">Beginners</a>
+        <a href="../best-hosting-for-students/">Students</a>
+        <a href="../shared-vs-managed-cloud-hosting/" aria-current="page">Shared vs cloud</a>
+        <a href="../how-to-deploy-a-static-site/">Deploy a static site</a>
+        <a href="../hostinger-vs-cloudways/">Hostinger vs Cloudways</a>
+        <a href="../hostinger-vs-siteground/">Hostinger vs SiteGround</a>
+        <a href="../namecheap-hosting-vs-hostinger/">Namecheap vs Hostinger</a>
+        <a href="../about/">About</a>
+      </nav>
+      <p>Host Intent is a placeholder name, not a purchased domain. Operator: Luis Hernández, El Salvador. Public copy in US English.</p>
+      <p>Canonical path for this page: <code>/shared-vs-managed-cloud-hosting/</code></p>
+    </div>
+  </footer>
+</body>
+</html>
