@@ -43,11 +43,11 @@ No invented prices, uptime percentages, or commissions presented as product fact
 
 ## Outbound links and SubID placeholders
 
-Zero programs approved as of 2026-08-28. Public pages link only to official marketing URLs, with no query string:
+Namecheap approved 2026-08-31 (Impact). Public Namecheap CTAs use the tracking URL below. Other brands stay official URLs:
 - https://www.hostinger.com/
 - https://www.cloudways.com/
 - https://www.siteground.com/
-- https://www.namecheap.com/
+- Namecheap tracked: https://namecheap.pxf.io/c/7699650/1632743/5618?subId1=SLUG&subId2=host-intent
 - https://pages.github.com/ on the deploy tutorial
 
 ### Where SubIDs will go after approval
