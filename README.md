@@ -43,9 +43,9 @@ No invented prices, uptime percentages, or commissions presented as product fact
 
 ## Outbound links and SubID placeholders
 
-Namecheap (Impact) and SiteGround DIRECT approved 2026-08-31. Public CTAs for those brands use the tracking URLs below. Hostinger and Cloudways stay official URLs:
+Namecheap, SiteGround, and Cloudways approved. Hostinger stays official:
 - https://www.hostinger.com/
-- https://www.cloudways.com/
+- Cloudways tracked: https://www.cloudways.com/en/?id=2203673
 - SiteGround tracked: https://www.siteground.com/index.htm?afcode=ca3e5f79665051eeba53d5917cbd94e7
 - Namecheap tracked: https://namecheap.pxf.io/c/7699650/1632743/5618?subId1=SLUG&subId2=host-intent
 - https://pages.github.com/ on the deploy tutorial
