@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>How to deploy a static site — Host Intent</title>
-  <meta name="description" content="Deploy HTML/CSS on GitHub Pages for $0. Relative URLs, local preview, DNS later. No custom domain required.">
+  <title>How to deploy a static site on GitHub Pages — Host Intent</title>
+  <meta name="description" content="Deploy HTML and CSS on GitHub Pages for $0. Relative URLs, local preview, DNS later. Uses Host Intent’s live project site as the worked example.">
   <meta name="author" content="Luis Hernández">
   <link rel="icon" href="../favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="../css/style.css">
@@ -29,50 +29,76 @@
     </div>
   </header>
   <main id="content">
-        <h1>How to deploy a static site for $0 (GitHub Pages)</h1>
-    <p class="lede">A static site is HTML, CSS, and maybe JavaScript files. No PHP. No database. You can put it on GitHub Pages at $0, with no custom domain and no hosting invoice. DNS is a later chapter.</p>
+    <h1>How to deploy a static site for $0 (GitHub Pages)</h1>
+    <p class="lede">A static site is HTML, CSS, and maybe JavaScript files. No PHP. No database. You can put it on GitHub Pages at $0, with no custom domain and no hosting invoice. Host Intent itself is the worked example: a live project site at <a href="https://luiyi0905.github.io/host-intent/">https://luiyi0905.github.io/host-intent/</a> (source on branch <code>site</code>). DNS is a later chapter.</p>
 
     <h2>Who this is for</h2>
-    <p>Students and small-site owners who need a public URL for a portfolio, a class page, or this kind of comparison site. If you need WordPress, Laravel, or MySQL, stop: that is not static. Use <a href="../best-web-hosting-for-beginners/">beginner hosting criteria</a> or <a href="../shared-vs-managed-cloud-hosting/">shared vs managed cloud</a> instead.</p>
+    <p>Students and small-site owners who need a public URL for a portfolio, a class page, or this kind of comparison site — including operators copying this exact tree (branch <code>site</code>, relative URLs, <code>.nojekyll</code>). If you need WordPress, Laravel, or MySQL, stop: that is not static. Use <a href="../best-web-hosting-for-beginners/">beginner hosting criteria</a>, <a href="../best-hosting-for-students/">student hosting</a>, or <a href="../shared-vs-managed-cloud-hosting/">shared vs managed cloud</a> instead. You do not need to buy a domain on day one.</p>
 
     <h2>What static means here</h2>
     <p>The server copies files to the browser. It does not run your code on each request. Forms that email you, login sessions, and shopping carts need something else (or a third-party form backend you are willing to trust — out of scope here).</p>
 
+    <h2>Project site vs user/organization site</h2>
+    <p>GitHub documents two shapes. A <strong>project</strong> site lives at <code>https://USER.github.io/REPO/</code>. Host Intent is that shape: <code>luiyi0905.github.io/host-intent/</code>. A <strong>user or organization</strong> site uses a different repository-name rule and a different default URL. Read the official overview rather than guessing: <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages">What is GitHub Pages?</a>.</p>
+
     <h2>Before you touch DNS</h2>
-    <p>Do not buy a domain to feel professional on day one. GitHub will give you a <code>*.github.io</code> hostname. Get the site green on that name first. Pointing a domain is a separate, optional step (and it is how people accidentally produce a blank site for 24 hours).</p>
+    <p>Do not buy a domain to feel professional on day one. GitHub will give you a <code>*.github.io</code> hostname. Get the site green on that name first. Pointing a domain is a separate, optional step (and it is how people accidentally produce a blank site while DNS propagates). If you later buy a domain only, see <a href="../namecheap-hosting-vs-hostinger/">Namecheap hosting vs Hostinger</a> for the “domain without hosting” fork — still optional for this tutorial.</p>
+
     <h2>Tutorial: GitHub Pages from the repo root</h2>
-    <p>Official product page: <a href="https://pages.github.com/">https://pages.github.com/</a>. Official docs live under GitHub Docs. UI labels change; if a blog screenshot disagrees with GitHub docs, trust the docs.</p>
+    <p>Official product page: <a href="https://pages.github.com/">https://pages.github.com/</a>. Docs hub: <a href="https://docs.github.com/en/pages">https://docs.github.com/en/pages</a>. Quickstart: <a href="https://docs.github.com/en/pages/quickstart">Pages quickstart</a>. UI labels change; if a blog screenshot disagrees with GitHub docs, trust the docs.</p>
     <ol>
-      <li><strong>Use a GitHub account you already have</strong> (signup is GitHub product, not Host Intent). This tutorial does not require paid GitHub features for a public project site — confirm on GitHub current billing docs if your repo is private.</li>
-      <li><strong>Create a new repository</strong> in the GitHub UI. Public repos can use Pages as GitHub currently documents.</li>
-      <li><strong>Add your files.</strong> A minimal site is <code>index.html</code> plus CSS. Folder URLs work if each folder has <code>index.html</code> (the same pattern this Host Intent tree uses).</li>
-      <li><strong>Commit on a branch you control.</strong> GitHub currently documents deploying from a branch (often the default branch) or from a <code>/docs</code> folder. This Host Intent source tree is meant to attach later as root or <code>docs/</code> — see the project README. Follow your own branch policy; this site source prefers a branch named <code>site</code> if you init git locally.</li>
-      <li><strong>Enable Pages</strong> in the repository Settings, Pages section. Choose the branch and <code>/</code> or <code>/docs</code>. Save.</li>
-      <li><strong>Wait for the first build.</strong> GitHub shows a <code>https://USER.github.io/REPO/</code> URL for project sites. User/organization sites use a different repo-name rule; read official docs rather than guessing.</li>
-      <li><strong>Check relative URLs.</strong> Open the Pages URL on a phone. If CSS 404s, your stylesheet path was probably absolute (<code>/css/style.css</code>) instead of relative. This tree uses relative paths so it also works when you open files locally.</li>
+      <li><strong>Use a GitHub account you already have</strong> (signup is GitHub product, not Host Intent). This tutorial does not require paid GitHub features for a public project site — confirm on GitHub’s current billing docs if your repo is private.</li>
+      <li><strong>Create a new repository</strong> in the GitHub UI. Public repos can use Pages as GitHub currently documents. Creating a site: <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site">Creating a GitHub Pages site</a>.</li>
+      <li><strong>Add your files.</strong> A minimal site is <code>index.html</code> plus CSS. Folder URLs work if each folder has <code>index.html</code> (the same pattern this Host Intent tree uses). Include an empty <code>.nojekyll</code> file at the publishing root so Pages does not run Jekyll on plain HTML (GitHub documents this when you are not using Jekyll).</li>
+      <li><strong>Commit on a branch you control.</strong> GitHub lets you publish from a branch (root <code>/</code> or <code>/docs</code>) or via Actions — see <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site">Configuring a publishing source</a>. Host Intent’s policy is branch <code>site</code> + repository root (<code>/</code>). That is <em>our</em> convention, not a GitHub requirement.</li>
+      <li><strong>Enable Pages</strong> in the repository Settings → Pages. Choose Deploy from a branch, select your branch and <code>/</code> or <code>/docs</code>, then Save.</li>
+      <li><strong>Wait for the first build.</strong> GitHub shows a <code>https://USER.github.io/REPO/</code> URL for project sites. First publishes can take a few minutes; if nothing appears after a longer wait, check the docs’ build/troubleshooting notes rather than inventing a timeout.</li>
+      <li><strong>Check relative URLs.</strong> Open the Pages URL on a phone. If CSS 404s on <code>https://user.github.io/repo/</code>, your stylesheet path was probably site-root absolute (<code>/css/style.css</code>) instead of relative (<code>css/style.css</code> or <code>../css/style.css</code> from a subfolder). Absolute paths that start with <code>/</code> resolve to <code>https://user.github.io/css/…</code> and miss the repo subpath. Host Intent uses relative paths so local preview and project Pages both work.</li>
     </ol>
+
     <h2>Preview locally before you publish</h2>
     <p>You can open <code>index.html</code> in a browser. For folder links, a local static server is cleaner. From this site directory:</p>
 <pre><code>python3 -m http.server 8080</code></pre>
     <p>Then visit <code>http://127.0.0.1:8080/</code>. No Node toolchain is required for Host Intent.</p>
 
     <h2>Optional: docs folder vs root</h2>
-    <p>GitHub Pages can serve the repository root or a <code>docs/</code> folder on a branch. If your git repo also holds notes that must not go public, keep the public HTML in <code>docs/</code> and point Pages there. Host Intent files currently live as a standalone tree (see project README). This site is the worked example: https://luiyi0905.github.io/host-intent/ on branch site.</p>
+    <p>GitHub Pages can serve the repository root or a <code>docs/</code> folder on a branch. If your git repo also holds notes that must not go public, keep the public HTML in <code>docs/</code> and point Pages there. Host Intent publishes from branch <code>site</code> at root. Live example: <a href="https://luiyi0905.github.io/host-intent/">https://luiyi0905.github.io/host-intent/</a>.</p>
+
+    <h2>HTTPS</h2>
+    <p>GitHub documents HTTPS for Pages hostnames, including enforcement in repository Settings → Pages. Read <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/securing-your-github-pages-site-with-https">Securing your GitHub Pages site with HTTPS</a>. Custom-domain certificates have extra DNS steps in those docs. Do not freeze GitHub A/AAAA IP addresses into this page — copy current values from GitHub’s custom-domain docs the day you do DNS.</p>
 
     <h2>Custom domains (later)</h2>
-    <p>When you actually own a domain, GitHub docs describe a <code>CNAME</code> file and DNS records at your registrar. Namecheap is one registrar; official site: <a href="https://namecheap.pxf.io/c/7699650/1632743/5618?subId1=hi-how-to-deploy-a-static-site&amp;subId2=host-intent" rel="sponsored">Namecheap</a>. Wrong records fail closed. Do this on a weekend, not an hour before class.</p>
+    <p>When you actually own a domain, GitHub docs describe DNS records and (when needed) a <code>CNAME</code> file: <a href="https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/about-custom-domains-and-github-pages">About custom domains and GitHub Pages</a> and <a href="https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site">Managing a custom domain</a>. Namecheap is one registrar; official tracked link: <a href="https://namecheap.pxf.io/c/7699650/1632743/5618?subId1=hi-how-to-deploy-a-static-site&amp;subId2=host-intent" rel="sponsored">Namecheap</a>. Registrar DNS help (if you use Namecheap): <a href="https://www.namecheap.com/support/knowledgebase/article.aspx/767/10/how-to-change-dns-for-a-domain/">How to change DNS for a domain</a>. Wrong records fail closed. Do this on a weekend, not an hour before class. Propagation can take a while; we do not invent an “always 24 hours” promise.</p>
+
+    <h2>Optional: custom 404 page</h2>
+    <p>You may add a <code>404.html</code> at the publishing root so visitors see a friendlier page when a path is missing. Treat it as a normal static file; check current GitHub Pages docs for any Jekyll-related notes if you are not using <code>.nojekyll</code>.</p>
+
+    <h2>Troubleshooting (short)</h2>
+    <ul class="plain">
+      <li><strong>First build delay.</strong> Wait a few minutes after enabling Pages or pushing; then hard-refresh. Check Actions / Pages status in the repo if nothing appears.</li>
+      <li><strong>404 on a folder.</strong> Each public folder needs an <code>index.html</code> (or an explicit filename in the URL).</li>
+      <li><strong>CSS or assets 404 on a project site.</strong> Relative paths vs leading-slash absolute paths — see the relative-URL step above.</li>
+      <li><strong>Wrong branch selected.</strong> Settings → Pages must point at the branch and folder you actually push (for Host Intent: <code>site</code> + <code>/</code>).</li>
+      <li><strong>Mixed content after a custom domain.</strong> Assets still loading over <code>http://</code> break HTTPS pages — fix asset URLs per GitHub’s HTTPS doc.</li>
+      <li><strong>Limits and private repos.</strong> Quotas and private-repo billing change; read <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits">GitHub Pages limits</a> and GitHub billing docs rather than numbers copied here.</li>
+    </ul>
 
     <h2>When to leave Pages for a paid host</h2>
     <ul class="plain">
       <li>You need server-side PHP or a database.</li>
       <li>You need mailbox hosting on the same vendor (still optional — school email may be enough).</li>
-      <li>Your app is not static. Then use the <a href="../best-web-hosting-for-beginners/">beginner</a> or <a href="../hostinger-vs-cloudways/">managed cloud</a> pages.</li>
+      <li>Your app is not static. Then use the <a href="../best-web-hosting-for-beginners/">beginner</a>, <a href="../best-hosting-for-students/">students</a>, or <a href="../hostinger-vs-cloudways/">Hostinger vs Cloudways</a> pages.</li>
     </ul>
 
     <h2>Official links</h2>
     <ul class="plain official">
-      <li>GitHub Pages: <a href="https://pages.github.com/">https://pages.github.com/</a></li>
-      <li>Hostinger: <a href="https://www.hostinger.com/">https://www.hostinger.com/</a></li>
+      <li>GitHub Pages product: <a href="https://pages.github.com/">https://pages.github.com/</a></li>
+      <li>GitHub Pages docs: <a href="https://docs.github.com/en/pages">https://docs.github.com/en/pages</a></li>
+      <li>What is GitHub Pages?: <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages">docs overview</a></li>
+      <li>Configuring a publishing source: <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site">publishing source</a></li>
+      <li>GitHub Pages limits: <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits">limits</a></li>
+      <li>Securing with HTTPS: <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/securing-your-github-pages-site-with-https">HTTPS</a></li>
+      <li>Hostinger (when Pages is the wrong shape): <a href="https://www.hostinger.com/">https://www.hostinger.com/</a></li>
       <li>Cloudways: <a href="https://www.cloudways.com/en/?id=2203673" rel="sponsored">Cloudways</a></li>
       <li>SiteGround: <a href="https://www.siteground.com/index.htm?afcode=ca3e5f79665051eeba53d5917cbd94e7" rel="sponsored">SiteGround</a></li>
       <li>Namecheap: <a href="https://namecheap.pxf.io/c/7699650/1632743/5618?subId1=hi-how-to-deploy-a-static-site&amp;subId2=host-intent" rel="sponsored">Namecheap</a></li>
@@ -81,23 +107,26 @@
     <h2>What we have not measured</h2>
     <div class="not-measured">
       <ul class="plain">
-        <li>No claim about GitHub Pages build minutes or quota — read GitHub current docs.</li>
+        <li>No claim about GitHub Pages quotas or build minutes as frozen numbers — read GitHub’s current <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits">limits</a> docs.</li>
         <li>No performance comparison of Pages vs a paid CDN. This site uses no paid CDN.</li>
-        <li>This tree is live at https://luiyi0905.github.io/host-intent/how-to-deploy-a-static-site/. We still have not measured Pages quota or compared it to a paid CDN.</li>
+        <li>No promised custom-domain propagation time (docs say it can take a while; we do not invent “always 24h”).</li>
+        <li>Private-repo Pages billing — send readers to GitHub billing docs.</li>
+        <li>No speed or uptime claims for Hostinger, Cloudways, SiteGround, or Namecheap.</li>
+        <li>This tree is live at <a href="https://luiyi0905.github.io/host-intent/how-to-deploy-a-static-site/">https://luiyi0905.github.io/host-intent/how-to-deploy-a-static-site/</a>. We still have not measured traffic or Pages quota usage.</li>
       </ul>
     </div>
 
     <h2>FAQ</h2>
     <dl>
       <dt>Does GitHub Pages support HTTPS?</dt>
-      <dd>GitHub documents HTTPS for Pages hostnames. Enforce it in the Pages settings when the checkbox is available. Custom domains have extra DNS/HTTPS steps in the official docs.</dd>
+      <dd>Yes for correctly configured Pages hostnames, as documented. Enforce it in Pages settings when the checkbox is available. Custom domains have extra DNS/HTTPS steps in the official docs linked above.</dd>
       <dt>Can I use a tiny SSG?</dt>
-      <dd>Yes, if it emits static files. This Host Intent tree is already plain HTML so you can preview without installing a framework.</dd>
+      <dd>Yes, if it emits static files. This Host Intent tree is already plain HTML so you can preview without installing a framework. If you skip Jekyll, keep <code>.nojekyll</code> as GitHub documents.</dd>
       <dt>Is this an affiliate tutorial to sell hosting?</dt>
-      <dd>No. The point is you may not need hosting yet. Disclosure: <a href="../about/">About</a>.</dd>
+      <dd>No. The point is you may not need paid hosting yet. Paid-host links stay in the official-links list for when Pages is the wrong shape. Disclosure: <a href="../about/">About</a>.</dd>
     </dl>
 
-    <p class="meta">Page updated 2026-08-28. This site is new; we have not run speed labs or long-term uptime logs. Prices change — check each provider’s current pricing page.</p>
+    <p class="meta">Page updated 2026-09-04. This site is new; we have not run speed labs or long-term uptime logs. Prices change — check each provider’s current pricing page.</p>
   </main>
   <footer class="site">
     <div class="wrap">
